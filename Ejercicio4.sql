@@ -44,6 +44,7 @@ CREATE TABLE Socios (
     apellidos VARCHAR(50),
     telefono VARCHAR(10),
 	IdPoblacion INT,
+    FOREIGN KEY (socioAvalador) REFERENCES socio(IdSocio),
     FOREIGN KEY (IdPoblacion) REFERENCES Poblaciones(IdPoblacion)
 );
 

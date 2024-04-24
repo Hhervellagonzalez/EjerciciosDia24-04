@@ -24,5 +24,5 @@ CREATE TABLE ASUNTO_PROCURADOR (
     DNI_Procurador SERIAL REFERENCES procurador(DNI_Procurador),
     CONSTRAINT PK_AsuntoProcurador PRIMARY KEY (N_Expediente, DNI_Procurador),
     FOREIGN KEY (N_Expediente) REFERENCES asunto(N_Expediente),
-	FOREIGN KEY (DNI_Procurador) REFERENCES procurador(DNI_Procurador)
+    FOREIGN KEY (DNI_Procurador) REFERENCES procurador(DNI_Procurador)
 );

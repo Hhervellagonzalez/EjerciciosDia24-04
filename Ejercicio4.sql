@@ -12,14 +12,16 @@ CREATE TABLE Colecciones(
 CREATE TABLE Poblaciones (
     IdPoblacion SERIAL PRIMARY KEY,
     nombre VARCHAR(100),
-    FOREIGN KEY (IdProvincia) REFERENCES Provincias(IdProvincia)
+	IdProvincia INT,
+     FOREIGN KEY (IdProvincia) REFERENCES Provincias(IdProvincia)
 );
 
 CREATE TABLE Almacenes (
     IdAlmacen SERIAL PRIMARY KEY,
     direccion VARCHAR(255),
     apertura DATE,
-    FOREIGN KEY (IdProvincia) REFERENCES Provincias(IdProvincia)
+	IdProvincia INT,
+     FOREIGN KEY (IdProvincia) REFERENCES Provincias(IdProvincia)
 );
 
 
@@ -28,8 +30,10 @@ CREATE TABLE Libros (
 	Editorial varchar(30),
 	Autor varchar(30),
 	Titulo varchar(30),
-    FOREIGN KEY (IdColeccion) REFERENCES Colecciones(IdColeccion),
-    Stock INT
+	IdColeccion INT,
+    Stock INT,
+    FOREIGN KEY (IdColeccion) REFERENCES Colecciones(IdColeccion)
+    
 );
 
 
@@ -39,11 +43,13 @@ CREATE TABLE Socios (
     Nombre VARCHAR(50),
     apellidos VARCHAR(50),
     telefono VARCHAR(10),
+	IdPoblacion INT,
     FOREIGN KEY (IdPoblacion) REFERENCES Poblaciones(IdPoblacion)
 );
 
 CREATE TABLE Pedidos (
     IdPedido SERIAL PRIMARY KEY,
+	IdSocio INT,
     FOREIGN KEY (IdSocio) REFERENCES Socios(IdSocio),
     forma_envio VARCHAR(50),
     forma_pago VARCHAR(50)
